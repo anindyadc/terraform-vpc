@@ -28,6 +28,9 @@ resource "aws_instance" "web1" {
     connection {
         user = "${var.EC2_USER}"
         private_key = "${file("${var.PRIVATE_KEY_PATH}")}"
+        host = "${aws_instance.cluster.public_ip}"
+        type = "ssh"
+        port = "22"
     }
 }
 
